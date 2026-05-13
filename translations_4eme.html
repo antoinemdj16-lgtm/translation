@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours de Monsieur Julien — Les Translations — 4ème</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════
+   DESIGN SYSTEM — cours Translations · M. Julien · 4ème
+   Thème clair premium — Apple Education Style
+══════════════════════════════════════════════ */
+:root {
+  --bg:       #f7f8fc;
+  --s1:       #ffffff;
+  --s2:       #f0f2f8;
+  --border:   #e0e3f0;
+  --txt:      #0f1023;
+  --muted:    #6e759a;
+  --soft:     #4a4f72;
+
+  --sky:      #1a7fd4; --sky-d:rgba(26,127,212,0.07); --sky-b:rgba(26,127,212,0.22);
+  --violet:   #6440cc; --violet-d:rgba(100,64,204,0.07); --violet-b:rgba(100,64,204,0.22);
+  --amber:    #c47800; --amber-d:rgba(196,120,0,0.07); --amber-b:rgba(196,120,0,0.22);
+  --rose:     #c0184a; --rose-d:rgba(192,24,74,0.07); --rose-b:rgba(192,24,74,0.22);
+  --teal:     #007a5e; --teal-d:rgba(0,122,94,0.07); --teal-b:rgba(0,122,94,0.22);
+  --lime:     #4a9a00; --lime-d:rgba(74,154,0,0.07); --lime-b:rgba(74,154,0,0.22);
+
+  --accent:   #1a7fd4;
+  --shadow-sm: 0 1px 4px rgba(15,16,35,0.06);
+  --shadow-md: 0 4px 20px rgba(15,16,35,0.08);
+  --shadow-lg: 0 12px 40px rgba(15,16,35,0.10);
+
+  --sidebar-w: 230px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--s2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ─── BANDEAU PROF ─── */
+.prof-banner {
+  background: linear-gradient(90deg, var(--violet) 0%, var(--sky) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  position: relative;
+  z-index: 200;
+}
+.prof-banner span { opacity: 0.75; font-weight: 400; margin-left: 8px; font-size: 11px; }
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--s1);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  z-index: 100;
+  overflow-y: auto;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+
+.logo { padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.logo-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sky); margin-bottom: 7px; }
+.logo-title { font-family: 'Instrument Serif', serif; font-size: 19px; color: var(--txt); line-height: 1.2; }
+.logo-level { font-size: 11px; color: var(--muted); margin-top: 4px; display: flex; align-items: center; gap: 5px; }
+.logo-level::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--sky); }
+
+.nav-group { margin-bottom: 4px; }
+.nav-label { font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 0 20px; margin-bottom: 4px; display: block; opacity: 0.6; }
+.nlink {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 20px;
+  font-size: 13px; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  transition: all 0.18s;
+  border-left: 2px solid transparent;
+  position: relative;
+}
+.nlink:hover, .nlink.on {
+  color: var(--sky);
+  border-left-color: var(--sky);
+  background: var(--sky-d);
+}
+.nd { width: 5px; height: 5px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background 0.18s; }
+.nlink:hover .nd, .nlink.on .nd { background: var(--sky); }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+}
+.sidebar-xp-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.sidebar-xp-track { height: 5px; border-radius: 3px; background: var(--s2); overflow: hidden; }
+.sidebar-xp-fill { height: 100%; background: linear-gradient(90deg, var(--sky) 0%, var(--violet) 100%); border-radius: 3px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+
+/* ─── MAIN ─── */
+.main { margin-left: var(--sidebar-w); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 64px 68px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #eef2ff 60%, #e8f4fd 100%);
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(26,127,212,0.04) 0px, transparent 1px, transparent 56px, rgba(26,127,212,0.04) 57px),
+    repeating-linear-gradient(0deg,  rgba(26,127,212,0.04) 0px, transparent 1px, transparent 56px, rgba(26,127,212,0.04) 57px);
+}
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.hero-blob-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(26,127,212,0.1) 0%, transparent 70%);
+  top: -100px; right: -100px;
+}
+.hero-blob-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(100,64,204,0.08) 0%, transparent 70%);
+  bottom: -50px; left: 200px;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--sky-d); border: 1px solid var(--sky-b);
+  color: var(--sky);
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 14px; border-radius: 100px;
+  margin-bottom: 24px;
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sky);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.7)} }
+
+.hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 68px; line-height: 1.0;
+  color: var(--txt);
+  margin-bottom: 18px;
+  position: relative; z-index: 1;
+  animation: fadeSlideUp 0.7s 0.1s ease both;
+}
+.hero h1 em { color: var(--sky); font-style: italic; }
+
+.hero-desc {
+  font-size: 16px; color: var(--soft);
+  max-width: 500px; line-height: 1.7;
+  margin-bottom: 32px;
+  animation: fadeSlideUp 0.7s 0.2s ease both;
+}
+.hero-desc strong { color: var(--txt); font-weight: 600; }
+
+.obj-row { display: flex; gap: 10px; flex-wrap: wrap; animation: fadeSlideUp 0.7s 0.3s ease both; }
+.obj-chip {
+  padding: 7px 14px; border-radius: 8px;
+  background: var(--s1); border: 1px solid var(--border);
+  font-size: 12.5px; font-weight: 500; color: var(--soft);
+  display: flex; align-items: center; gap: 7px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.obj-chip:hover { box-shadow: var(--shadow-md); border-color: var(--sky-b); color: var(--sky); }
+.obj-chip-icon { font-size: 15px; }
+
+/* HERO CANVAS */
+.hero-canvas-wrap {
+  position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+  animation: fadeSlideUp 0.9s 0.3s ease both;
+}
+
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── CONTENT ─── */
+.content { padding: 56px 64px 100px; max-width: 960px; }
+
+/* ─── SECTIONS ─── */
+.section { margin-bottom: 80px; opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.sec-hdr {
+  display: flex; align-items: flex-start; gap: 18px;
+  margin-bottom: 30px; padding-bottom: 20px;
+  border-bottom: 1.5px solid var(--border);
+}
+.sec-n {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  color: var(--sky); background: var(--sky-d);
+  border: 1px solid var(--sky-b);
+  padding: 4px 10px; border-radius: 6px;
+  margin-top: 6px; white-space: nowrap;
+}
+.sec-n.violet { color: var(--violet); background: var(--violet-d); border-color: var(--violet-b); }
+.sec-n.teal   { color: var(--teal);   background: var(--teal-d);   border-color: var(--teal-b); }
+.sec-n.amber  { color: var(--amber);  background: var(--amber-d);  border-color: var(--amber-b); }
+
+.sec-title { font-family: 'Instrument Serif', serif; font-size: 30px; color: var(--txt); line-height: 1.15; }
+.sec-sub { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+p { font-size: 15px; line-height: 1.75; margin-bottom: 12px; color: var(--soft); }
+p strong { color: var(--txt); }
+
+/* ─── SUBSECTION ─── */
+.subsec { margin-bottom: 40px; }
+.subsec-title {
+  font-size: 17px; font-weight: 700; color: var(--txt);
+  margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.subsec-title::before { content:''; width:3px; height:18px; border-radius:2px; background: var(--sky); flex-shrink:0; }
+
+/* ─── CARDS ─── */
+.card {
+  border-radius: 12px; padding: 22px 26px; margin: 18px 0;
+  border: 1px solid;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-md); }
+.card::before {
+  display: block; font-size: 9px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.cdef  { background:var(--sky-d);    border-color:var(--sky-b);    } .cdef::before  { content:'DÉFINITION'; color:var(--sky); }
+.cmet  { background:var(--violet-d); border-color:var(--violet-b); } .cmet::before  { content:'MÉTHODE';    color:var(--violet); }
+.cex   { background:var(--teal-d);   border-color:var(--teal-b);   } .cex::before   { content:'EXEMPLE';    color:var(--teal); }
+.cwarn { background:var(--rose-d);   border-color:var(--rose-b);   } .cwarn::before { content:'ATTENTION';  color:var(--rose); }
+.ctip  { background:var(--amber-d);  border-color:var(--amber-b);  } .ctip::before  { content:'ASTUCE';     color:var(--amber); }
+.cprop { background:var(--lime-d);   border-color:var(--lime-b);   } .cprop::before { content:'PROPRIÉTÉ';  color:var(--lime); }
+
+.card p { margin-bottom: 0; }
+
+/* ─── INTERACTIVE CANVAS ─── */
+.canvas-wrap {
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  background: var(--s1);
+  margin: 20px 0;
+}
+.canvas-hdr {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--s2);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.canvas-hdr-title { font-size: 12px; font-weight: 700; color: var(--txt); display: flex; align-items: center; gap: 8px; }
+.canvas-hdr-title::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--sky); }
+.canvas-hdr-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--sky);
+  background: var(--sky-d); border: 1px solid var(--sky-b);
+  padding: 3px 9px; border-radius: 5px;
+}
+.canvas-body { padding: 20px; display: flex; align-items: center; justify-content: center; }
+canvas { display: block; max-width: 100%; }
+
+/* ─── CONTROLS ─── */
+.ctrl-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 20px; border-top: 1px solid var(--border); background: var(--s2); }
+.ctrl-btn {
+  padding: 8px 16px; border-radius: 8px;
+  background: var(--s1); border: 1px solid var(--border);
+  color: var(--txt); font-family: 'Plus Jakarta Sans'; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all 0.18s;
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+.ctrl-btn:hover { border-color: var(--sky-b); color: var(--sky); box-shadow: var(--shadow-md); }
+.ctrl-btn.primary { background: var(--sky); color: #fff; border-color: var(--sky); }
+.ctrl-btn.primary:hover { opacity: 0.88; }
+.ctrl-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+.ctrl-input {
+  padding: 7px 12px; border-radius: 7px;
+  border: 1px solid var(--border); background: var(--s1);
+  color: var(--txt); font-family: 'DM Mono'; font-size: 13px; width: 70px;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.ctrl-input:focus { border-color: var(--sky); }
+
+/* ─── PROPERTY CARDS GRID ─── */
+.props-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px; margin: 20px 0;
+}
+.prop-card {
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  box-shadow: var(--shadow-sm);
+  cursor: default;
+}
+.prop-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--sky-b);
+}
+.prop-card-icon-wrap {
+  height: 120px; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--sky-d) 0%, rgba(100,64,204,0.05) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.prop-card-body { padding: 16px 18px; }
+.prop-card-title { font-size: 14px; font-weight: 700; color: var(--txt); margin-bottom: 6px; }
+.prop-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 0; }
+
+/* ─── STEPS ─── */
+.steps-list { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+.step-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 20px; background: var(--s1);
+  border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.step-item:hover { box-shadow: var(--shadow-md); border-color: var(--sky-b); }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--sky); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; flex-shrink: 0;
+  font-family: 'DM Mono';
+}
+.step-content { flex: 1; }
+.step-title { font-size: 14px; font-weight: 700; color: var(--txt); margin-bottom: 4px; }
+.step-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+
+/* ─── METHOD BOX ─── */
+.method-box {
+  background: var(--s1);
+  border: 1.5px solid var(--violet-b);
+  border-radius: 14px; padding: 28px 32px;
+  margin: 20px 0;
+  box-shadow: var(--shadow-md);
+  position: relative; overflow: hidden;
+}
+.method-box::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--violet) 0%, var(--sky) 100%);
+}
+.method-box-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--violet);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.method-box-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+/* ─── CHECKLIST ─── */
+.cl { list-style: none; display: flex; flex-direction: column; gap: 9px; margin: 10px 0; }
+.cl li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14.5px; color: var(--soft); line-height: 1.55;
+}
+.cn {
+  width: 22px; height: 22px; border-radius: 6px;
+  background: var(--sky-d); border: 1px solid var(--sky-b);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--sky); flex-shrink: 0;
+  margin-top: 2px; font-family: 'DM Mono'; font-weight: 600;
+}
+
+/* ─── QUIZ ─── */
+.g-challenge {
+  background: var(--s1); border: 1px solid var(--amber-b);
+  border-radius: 14px; padding: 22px 26px; margin: 20px 0;
+  box-shadow: var(--shadow-sm);
+  position: relative; overflow: hidden;
+}
+.g-challenge::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 3px; height: 100%;
+  background: var(--amber);
+}
+.g-challenge-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--amber);
+  background: var(--amber-d); border: 1px solid var(--amber-b);
+  padding: 4px 10px; border-radius: 5px;
+  display: inline-block; margin-bottom: 12px;
+}
+.g-challenge-q { font-size: 14.5px; font-weight: 600; color: var(--txt); margin-bottom: 14px; line-height: 1.5; }
+.g-challenge-opts { display: flex; gap: 9px; flex-wrap: wrap; }
+.g-copt {
+  padding: 8px 18px; border-radius: 8px;
+  background: var(--s2); border: 1.5px solid var(--border);
+  color: var(--txt); font-family: 'DM Mono'; font-size: 13px;
+  cursor: pointer; transition: all 0.15s;
+}
+.g-copt:hover { border-color: var(--amber); color: var(--amber); background: var(--amber-d); }
+.g-copt.gc-ok { border-color: var(--teal); background: var(--teal-d); color: var(--teal); }
+.g-copt.gc-ko { border-color: var(--rose); background: var(--rose-d); color: var(--rose); }
+.g-copt:disabled { cursor: not-allowed; opacity: 0.7; }
+.g-challenge-fb { margin-top: 12px; font-size: 13px; font-weight: 600; display: none; line-height: 1.5; }
+.g-challenge-fb.show { display: block; animation: fu 0.25s ease; }
+
+/* ─── GAMIFICATION HUD ─── */
+#gHUD {
+  position: fixed; top: 0; right: 0;
+  width: 200px;
+  background: var(--s1); border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); border-radius: 0 0 0 14px;
+  padding: 14px 16px 12px; z-index: 300;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+#gHUD.hud-hidden { transform: translateX(calc(100% + 4px)); }
+#gHUD-toggle {
+  position: fixed; top: 14px; right: 208px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--s1); border: 1px solid var(--border); color: var(--muted);
+  font-size: 11px; cursor: pointer; z-index: 301;
+  display: flex; align-items: center; justify-content: center;
+  transition: right 0.35s cubic-bezier(0.4,0,0.2,1), background 0.2s, color 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+#gHUD-toggle:hover { background: var(--sky); color: #fff; border-color: var(--sky); }
+#gHUD-toggle.hud-hidden { right: 8px; background: var(--sky); color: #fff; border-color: var(--sky); }
+
+.hud-title { font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.hud-level-badge { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.hud-level-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--sky-d); border: 1px solid var(--sky-b); display: flex; align-items: center; justify-content: center; font-size: 15px; }
+.hud-level-name { font-size: 12px; font-weight: 700; color: var(--txt); }
+.hud-level-sub  { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.hud-xp-label { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.hud-xp-label span { font-size: 10px; color: var(--muted); }
+.hud-xp-label strong { font-size: 10px; color: var(--sky); }
+.hud-xp-track { height: 5px; border-radius: 3px; background: var(--s2); border: 1px solid var(--border); overflow: hidden; margin-bottom: 10px; }
+.hud-xp-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--sky) 0%, var(--violet) 100%); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+.hud-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.hud-badge-slot {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: var(--s2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; filter: grayscale(1); opacity: 0.3;
+  transition: all 0.3s; position: relative;
+}
+.hud-badge-slot.unlocked { filter: none; opacity: 1; border-color: var(--sky-b); background: var(--sky-d); box-shadow: 0 0 8px rgba(26,127,212,0.25); }
+
+/* ─── TOAST ─── */
+#gToastContainer { position: fixed; bottom: 20px; left: calc(var(--sidebar-w) + 20px); z-index: 999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+.g-toast {
+  padding: 10px 16px; border-radius: 10px;
+  background: var(--txt); color: var(--bg);
+  font-size: 13px; font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.3s ease, toastOut 0.3s 2.6s ease forwards;
+  pointer-events: none;
+}
+.toast-xp { background: var(--sky); color: #fff; }
+.toast-badge { background: var(--violet); color: #fff; }
+@keyframes toastIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes toastOut { from{opacity:1;transform:translateY(0)} to{opacity:0;transform:translateY(-10px)} }
+
+/* ─── XP POP ─── */
+.g-xp-pop {
+  position: fixed; pointer-events: none; z-index: 999;
+  font-size: 15px; font-weight: 800; color: var(--sky);
+  font-family: 'DM Mono';
+  animation: xpPop 1.5s ease forwards;
+}
+@keyframes xpPop { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(-40px)} }
+
+@keyframes fu { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: var(--border); margin: 30px 0; }
+
+/* ─── VECTOR DEMO ─── */
+.vector-demo {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  margin: 16px 0;
+}
+.vector-demo-card {
+  flex: 1; min-width: 200px;
+  background: var(--s1); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+  box-shadow: var(--shadow-sm); text-align: center;
+}
+.vector-demo-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.vector-demo-value { font-family: 'DM Mono'; font-size: 18px; color: var(--sky); font-weight: 500; }
+.vector-demo-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ─── NOTICE BOX ─── */
+.notice {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 20px; border-radius: 12px;
+  background: var(--sky-d); border: 1px solid var(--sky-b);
+  margin: 16px 0;
+}
+.notice-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.notice-content { font-size: 14px; color: var(--soft); line-height: 1.6; }
+.notice-content strong { color: var(--txt); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar { transform: translateX(-100%); width: 230px; }
+  .sidebar.open { transform: translateX(0); }
+  .menu-btn { display: flex !important; }
+  .hero { padding: 48px 24px 40px; }
+  .hero h1 { font-size: 42px; }
+  .content { padding: 32px 24px 80px; }
+  .hero-canvas-wrap { display: none; }
+  .props-grid { grid-template-columns: 1fr; }
+}
+
+.menu-btn {
+  display: none;
+  position: fixed; top: 40px; left: 12px; z-index: 150;
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--s1); border: 1px solid var(--border);
+  align-items: center; justify-content: center;
+  cursor: pointer; flex-direction: column; gap: 5px;
+  box-shadow: var(--shadow-sm);
+}
+.menu-btn span { display: block; width: 18px; height: 2px; background: var(--txt); border-radius: 1px; }
+
+/* ─── GRID ANIM canvas ─── */
+.anim-canvas-container {
+  background: var(--s2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<!-- Bandeau prof -->
+<div class="prof-banner">
+  Cours de Monsieur Julien
+  <span>Mathématiques · 4ème · Géométrie</span>
+</div>
+
+<!-- Menu burger mobile -->
+<button class="menu-btn" id="menuBtn" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-eyebrow">Géométrie</div>
+    <div class="logo-title">Les<br><em>Translations</em></div>
+    <div class="logo-level">4ème</div>
+  </div>
+
+  <div class="nav-group">
+    <span class="nav-label">Introduction</span>
+    <a href="#hero" class="nlink on"><span class="nd"></span>Présentation</a>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">Cours</span>
+    <a href="#s1" class="nlink"><span class="nd"></span>Définition</a>
+    <a href="#s2" class="nlink"><span class="nd"></span>Construction</a>
+    <a href="#s2a" class="nlink" style="padding-left:32px; font-size:12px;"><span class="nd"></span>Sur quadrillage</a>
+    <a href="#s2b" class="nlink" style="padding-left:32px; font-size:12px;"><span class="nd"></span>Sur papier blanc</a>
+    <a href="#s3" class="nlink"><span class="nd"></span>Propriétés</a>
+    <a href="#s4" class="nlink"><span class="nd"></span>Méthode</a>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-xp-label">
+      <span>Progression</span>
+      <span id="gSideXP">0 pts</span>
+    </div>
+    <div class="sidebar-xp-track">
+      <div class="sidebar-xp-fill" id="gSideFill"></div>
+    </div>
+  </div>
+</aside>
+
+<!-- HUD Gamification -->
+<div id="gHUD">
+  <div class="hud-title">Ma progression</div>
+  <div class="hud-level-badge">
+    <div class="hud-level-icon" id="gLevelIcon">🌱</div>
+    <div>
+      <div class="hud-level-name" id="gLevelName">Débutant</div>
+      <div class="hud-level-sub" id="gLevelSub">Continue !</div>
+    </div>
+  </div>
+  <div class="hud-xp-label">
+    <span>XP total</span>
+    <strong id="gXPText">0 / 150</strong>
+  </div>
+  <div class="hud-xp-track"><div class="hud-xp-fill" id="gXPFill" style="width:0%"></div></div>
+  <div class="hud-badges">
+    <div class="hud-badge-slot" id="gb-def" title="Maître de la définition">📐</div>
+    <div class="hud-badge-slot" id="gb-quad" title="Expert du quadrillage">🗺️</div>
+    <div class="hud-badge-slot" id="gb-prop" title="Champion des propriétés">🔬</div>
+    <div class="hud-badge-slot" id="gb-meth" title="Maître de la méthode">⭐</div>
+    <div class="hud-badge-slot" id="gb-all" title="Maître absolu">🏆</div>
+  </div>
+</div>
+<button id="gHUD-toggle" onclick="gHUDtoggle()">▶</button>
+
+<div id="gToastContainer"></div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Chapitre Géométrie · 4ème
+    </div>
+    <h1>Les <em>Trans&shy;lations</em></h1>
+    <p class="hero-desc">
+      Découvrez comment <strong>déplacer une figure</strong> dans le plan sans la tourner ni la retourner, à l'aide d'un vecteur de translation.
+    </p>
+    <div class="obj-row">
+      <div class="obj-chip"><span class="obj-chip-icon">🎯</span>Définir une translation</div>
+      <div class="obj-chip"><span class="obj-chip-icon">📐</span>Construire l'image d'une figure</div>
+      <div class="obj-chip"><span class="obj-chip-icon">🔬</span>Utiliser les propriétés</div>
+    </div>
+
+    <!-- Animation héro -->
+    <div class="hero-canvas-wrap">
+      <canvas id="heroCanvas" width="320" height="240"></canvas>
+    </div>
+  </section>
+
+  <!-- ══ CONTENT ══ -->
+  <div class="content">
+
+    <!-- ── SECTION 1 : Définition ── -->
+    <section class="section" id="s1">
+      <div class="sec-hdr">
+        <div class="sec-n">01</div>
+        <div>
+          <div class="sec-title">Définition d'une translation</div>
+          <div class="sec-sub">Comprendre intuitivement le déplacement</div>
+        </div>
+      </div>
+
+      <p>Une <strong>translation</strong> est une transformation géométrique qui fait <strong>glisser</strong> chaque point du plan dans la même direction, le même sens et la même distance. Imaginez que vous déplacez une figure sur une table, sans la faire tourner ni la retourner.</p>
+
+      <div class="card cdef">
+        <p><strong>Définition :</strong> La translation de vecteur <em style="font-family:'DM Mono'; color:var(--sky);">⃗v</em> associe à tout point <strong>A</strong> du plan un point <strong>A'</strong> tel que <span style="font-family:'DM Mono'; color:var(--sky);">AA' = ⃗v</span>. C'est-à-dire que <strong>AA' est parallèle, de même sens et de même longueur</strong> que le vecteur ⃗v.</p>
+      </div>
+
+      <div class="canvas-wrap">
+        <div class="canvas-hdr">
+          <div class="canvas-hdr-title">Animation interactive — Translation d'un triangle</div>
+          <div class="canvas-hdr-badge">INTERACTIF</div>
+        </div>
+        <div class="canvas-body">
+          <canvas id="transCanvas" width="620" height="300"></canvas>
+        </div>
+        <div class="ctrl-row">
+          <button class="ctrl-btn primary" id="animBtn" onclick="toggleAnim()">▶ Animer</button>
+          <button class="ctrl-btn" onclick="resetAnim()">↺ Réinitialiser</button>
+          <span class="ctrl-label">Déplacement : <strong id="vecDisplay">(4 ; 2)</strong></span>
+        </div>
+      </div>
+
+      <div class="vector-demo">
+        <div class="vector-demo-card">
+          <div class="vector-demo-label">Direction</div>
+          <div class="vector-demo-value">Horizontale + montante</div>
+          <div class="vector-demo-sub">Définie par le vecteur</div>
+        </div>
+        <div class="vector-demo-card">
+          <div class="vector-demo-label">Vecteur ⃗v</div>
+          <div class="vector-demo-value" id="vecValue">(4 ; 2)</div>
+          <div class="vector-demo-sub">Composantes x et y</div>
+        </div>
+        <div class="vector-demo-card">
+          <div class="vector-demo-label">Distance</div>
+          <div class="vector-demo-value" id="vecDist">4,5 cm</div>
+          <div class="vector-demo-sub">Norme du vecteur</div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <div class="notice-icon">💡</div>
+        <div class="notice-content">
+          <strong>À retenir :</strong> le vecteur de translation est représenté par une <strong>flèche</strong>. Il indique la direction, le sens et la longueur du déplacement. Tous les points de la figure se déplacent <strong>exactement de la même façon</strong>.
+        </div>
+      </div>
+
+      <!-- Mini défi 1 -->
+      <div class="g-challenge">
+        <div class="g-challenge-tag">🎯 Mini défi · +15 XP</div>
+        <div class="g-challenge-q">Un point A est translaté par le vecteur ⃗v(3 ; −2). Que se passe-t-il exactement ?</div>
+        <div class="g-challenge-opts">
+          <button class="g-copt" onclick="gChallenge('s1', this, false, 'La figure est tournée, pas déplacée en ligne droite.')" disabled="false">La figure tourne de 3°</button>
+          <button class="g-copt" onclick="gChallenge('s1', this, true, 'Oui ! On se déplace de 3 vers la droite et 2 vers le bas.')" disabled="false">A se déplace de 3 vers la droite et 2 vers le bas</button>
+          <button class="g-copt" onclick="gChallenge('s1', this, false, 'Non, les coordonnées de v ne sont pas les coordonnées de A\'.')" disabled="false">A prend les coordonnées (3 ; −2)</button>
+        </div>
+        <div class="g-challenge-fb" id="gcf-s1"></div>
+      </div>
+
+    </section>
+
+    <!-- ── SECTION 2 : Construction ── -->
+    <section class="section" id="s2">
+      <div class="sec-hdr">
+        <div class="sec-n violet">02</div>
+        <div>
+          <div class="sec-title">Construction d'une translation</div>
+          <div class="sec-sub">Sur quadrillage et sur papier blanc</div>
+        </div>
+      </div>
+
+      <!-- 2.1 Quadrillage -->
+      <div class="subsec" id="s2a">
+        <div class="subsec-title">2.1 Sur papier quadrillé</div>
+        <p>Sur un quadrillage, construire l'image d'une figure par translation est simple : il suffit de <strong>compter les carreaux</strong> dans chaque direction pour chaque sommet.</p>
+
+        <div class="card ctip">
+          <p><strong>Méthode des carreaux :</strong> si le vecteur est ⃗v(a ; b), alors chaque sommet se déplace de <span style="font-family:'DM Mono';color:var(--amber)">a</span> carreaux horizontalement et <span style="font-family:'DM Mono';color:var(--amber)">b</span> carreaux verticalement. On relie ensuite les images pour obtenir la figure translatée.</p>
+        </div>
+
+        <div class="canvas-wrap">
+          <div class="canvas-hdr">
+            <div class="canvas-hdr-title">Construction sur quadrillage — Pas à pas</div>
+            <div class="canvas-hdr-badge">PAS À PAS</div>
+          </div>
+          <div class="canvas-body" style="background: #fafbff;">
+            <canvas id="gridCanvas" width="620" height="320"></canvas>
+          </div>
+          <div class="ctrl-row">
+            <button class="ctrl-btn primary" onclick="gridStep()">Étape suivante →</button>
+            <button class="ctrl-btn" onclick="gridReset()">↺ Recommencer</button>
+            <span class="ctrl-label" id="gridStepLabel">Étape 0/4</span>
+          </div>
+        </div>
+
+        <div class="steps-list" style="margin-top: 20px;">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Identifier les sommets</div>
+              <div class="step-desc">Repérer chaque sommet de la figure originale sur le quadrillage (A, B, C…)</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Compter les carreaux</div>
+              <div class="step-desc">Pour chaque sommet, avancer de <em>a</em> carreaux horizontalement et <em>b</em> carreaux verticalement.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Placer les images</div>
+              <div class="step-desc">Marquer les points A', B', C'… obtenus après déplacement.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <div class="step-title">Relier les images</div>
+              <div class="step-desc">Tracer la figure en reliant A'B'C'… dans le même ordre que ABC. La figure translatée est identique à l'originale.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini défi 2 -->
+        <div class="g-challenge">
+          <div class="g-challenge-tag">🎯 Mini défi · +15 XP</div>
+          <div class="g-challenge-q">Pour translater un triangle ABC de vecteur ⃗v(5 ; −3), combien de carreaux descend-on ?</div>
+          <div class="g-challenge-opts">
+            <button class="g-copt" onclick="gChallenge('s2a', this, false, 'Non, 5 est le déplacement horizontal (vers la droite).')">5 carreaux</button>
+            <button class="g-copt" onclick="gChallenge('s2a', this, true, 'Correct ! −3 signifie 3 carreaux vers le bas.')">3 carreaux vers le bas</button>
+            <button class="g-copt" onclick="gChallenge('s2a', this, false, 'Non, −3 est la composante verticale, pas 8.')">8 carreaux</button>
+          </div>
+          <div class="g-challenge-fb" id="gcf-s2a"></div>
+        </div>
+      </div>
+
+      <!-- 2.2 Papier blanc -->
+      <div class="subsec" id="s2b">
+        <div class="subsec-title">2.2 Sur papier blanc (sans quadrillage)</div>
+        <p>Sans quadrillage, on utilise les propriétés du <strong>parallélisme</strong> et de la <strong>conservation des longueurs</strong> pour construire l'image par translation.</p>
+
+        <div class="card cmet">
+          <p><strong>Méthode :</strong> Pour construire A' image de A par la translation de vecteur ⃗v :</p>
+          <ol style="margin-top: 10px; padding-left: 20px; line-height: 2; font-size: 14.5px; color: var(--soft);">
+            <li>Tracer une droite passant par A <strong>parallèle</strong> à ⃗v</li>
+            <li>Reporter sur cette droite la longueur du vecteur ⃗v dans le bon sens</li>
+            <li>Le point obtenu est A'</li>
+            <li>Répéter l'opération pour chaque sommet</li>
+          </ol>
+        </div>
+
+        <div class="canvas-wrap">
+          <div class="canvas-hdr">
+            <div class="canvas-hdr-title">Construction sur papier blanc — Animation</div>
+            <div class="canvas-hdr-badge">ANIMÉ</div>
+          </div>
+          <div class="canvas-body">
+            <canvas id="whiteCanvas" width="620" height="300"></canvas>
+          </div>
+          <div class="ctrl-row">
+            <button class="ctrl-btn primary" onclick="whiteStep()">Étape suivante →</button>
+            <button class="ctrl-btn" onclick="whiteReset()">↺ Recommencer</button>
+            <span class="ctrl-label" id="whiteStepLabel">Étape 0/3</span>
+          </div>
+        </div>
+
+        <div class="notice">
+          <div class="notice-icon">📐</div>
+          <div class="notice-content">
+            <strong>Rappel :</strong> Pour tracer deux droites parallèles, on utilise une équerre et une règle. On glisse l'équerre le long de la règle positionnée sur la droite de référence.
+          </div>
+        </div>
+
+        <!-- Mini défi 3 -->
+        <div class="g-challenge">
+          <div class="g-challenge-tag">🎯 Mini défi · +15 XP</div>
+          <div class="g-challenge-q">Sur papier blanc, quel outil est indispensable pour tracer les parallèles lors d'une construction par translation ?</div>
+          <div class="g-challenge-opts">
+            <button class="g-copt" onclick="gChallenge('s2b', this, false, 'Le compas sert à reporter des longueurs, mais c\'est l\'équerre qui trace des parallèles.')">Le compas seul</button>
+            <button class="g-copt" onclick="gChallenge('s2b', this, true, 'Parfait ! Règle + équerre permettent de tracer des droites parallèles.')">La règle et l'équerre</button>
+            <button class="g-copt" onclick="gChallenge('s2b', this, false, 'Le rapporteur mesure des angles, pas des parallèles.')">Le rapporteur</button>
+          </div>
+          <div class="g-challenge-fb" id="gcf-s2b"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3 : Propriétés ── -->
+    <section class="section" id="s3">
+      <div class="sec-hdr">
+        <div class="sec-n teal">03</div>
+        <div>
+          <div class="sec-title">Propriétés de conservation</div>
+          <div class="sec-sub">Ce que la translation préserve toujours</div>
+        </div>
+      </div>
+
+      <p>La translation est une <strong>isométrie</strong> : elle conserve les formes et les tailles. Voici les 5 propriétés fondamentales illustrées.</p>
+
+      <div class="props-grid">
+        <!-- Longueurs -->
+        <div class="prop-card">
+          <div class="prop-card-icon-wrap">
+            <canvas id="propCanvas1" width="200" height="100"></canvas>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-title">📏 Conservation des longueurs</div>
+            <div class="prop-card-desc">Si AB = 5 cm, alors A'B' = 5 cm. La translation ne modifie pas les distances entre les points.</div>
+          </div>
+        </div>
+
+        <!-- Angles -->
+        <div class="prop-card">
+          <div class="prop-card-icon-wrap">
+            <canvas id="propCanvas2" width="200" height="100"></canvas>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-title">📐 Conservation des angles</div>
+            <div class="prop-card-desc">Si l'angle ABC = 60°, alors l'angle A'B'C' = 60°. Les angles sont identiques avant et après.</div>
+          </div>
+        </div>
+
+        <!-- Alignement -->
+        <div class="prop-card">
+          <div class="prop-card-icon-wrap">
+            <canvas id="propCanvas3" width="200" height="100"></canvas>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-title">📍 Conservation de l'alignement</div>
+            <div class="prop-card-desc">Si A, B, C sont alignés, alors A', B', C' sont aussi alignés. L'ordre est conservé.</div>
+          </div>
+        </div>
+
+        <!-- Parallélisme -->
+        <div class="prop-card">
+          <div class="prop-card-icon-wrap">
+            <canvas id="propCanvas4" width="200" height="100"></canvas>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-title">↔ Conservation du parallélisme</div>
+            <div class="prop-card-desc">Si (AB) ∥ (CD), alors (A'B') ∥ (C'D'). Les droites parallèles restent parallèles.</div>
+          </div>
+        </div>
+
+        <!-- Aires -->
+        <div class="prop-card">
+          <div class="prop-card-icon-wrap">
+            <canvas id="propCanvas5" width="200" height="100"></canvas>
+          </div>
+          <div class="prop-card-body">
+            <div class="prop-card-title">🔲 Conservation des aires</div>
+            <div class="prop-card-desc">L'aire de la figure image est identique à l'aire de la figure originale. La surface ne change pas.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cprop" style="margin-top: 24px;">
+        <p><strong>En résumé :</strong> une translation conserve les <strong>longueurs</strong>, les <strong>angles</strong>, l'<strong>alignement</strong>, le <strong>parallélisme</strong> et les <strong>aires</strong>. La figure translatée est donc <em>superposable</em> à la figure originale.</p>
+      </div>
+
+      <!-- Mini défi 4 -->
+      <div class="g-challenge">
+        <div class="g-challenge-tag">🎯 Mini défi · +15 XP</div>
+        <div class="g-challenge-q">Triangle ABC avec AB = 7 cm est translaté. Quelle est la longueur de A'B' ?</div>
+        <div class="g-challenge-opts">
+          <button class="g-copt" onclick="gChallenge('s3', this, false, 'Non, la translation ne modifie pas les longueurs.')">On ne peut pas savoir</button>
+          <button class="g-copt" onclick="gChallenge('s3', this, true, 'Bravo ! La translation conserve les longueurs : A\'B\' = AB = 7 cm.')">7 cm</button>
+          <button class="g-copt" onclick="gChallenge('s3', this, false, 'Non, 14 cm serait le double. La translation ne double pas les longueurs.')">14 cm</button>
+        </div>
+        <div class="g-challenge-fb" id="gcf-s3"></div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4 : Méthode ── -->
+    <section class="section" id="s4">
+      <div class="sec-hdr">
+        <div class="sec-n amber">04</div>
+        <div>
+          <div class="sec-title">Méthode — En exercice</div>
+          <div class="sec-sub">Démarche pas à pas pour résoudre les problèmes</div>
+        </div>
+      </div>
+
+      <p>Lors d'un exercice sur les translations, voici la <strong>démarche rigoureuse</strong> à suivre pour ne pas faire d'erreurs.</p>
+
+      <div class="method-box">
+        <div class="method-box-title">Démarche complète</div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num" style="background: var(--violet);">1</div>
+            <div class="step-content">
+              <div class="step-title">Lire et identifier le vecteur</div>
+              <div class="step-desc">Relever les composantes du vecteur ⃗v(a ; b). Si a &gt; 0 → droite ; a &lt; 0 → gauche. Si b &gt; 0 → haut ; b &lt; 0 → bas.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background: var(--violet);">2</div>
+            <div class="step-content">
+              <div class="step-title">Identifier les sommets à translater</div>
+              <div class="step-desc">Lister tous les points de la figure : A, B, C… pour ne pas en oublier.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background: var(--violet);">3</div>
+            <div class="step-content">
+              <div class="step-title">Construire chaque image</div>
+              <div class="step-desc">Appliquer le vecteur à chaque sommet. Sur quadrillage : compter les carreaux. Sur papier blanc : utiliser règle + équerre.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background: var(--violet);">4</div>
+            <div class="step-content">
+              <div class="step-title">Tracer la figure image</div>
+              <div class="step-desc">Relier A'B'C'… dans le même ordre qu'ABC. Nommer les points images avec le symbole ' (prime).</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num" style="background: var(--violet);">5</div>
+            <div class="step-content">
+              <div class="step-title">Vérifier avec les propriétés</div>
+              <div class="step-desc">Contrôler que A'B' = AB, que les angles sont identiques, et que la figure a le même aspect.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsec-title" style="margin-top: 0;">Exemple guidé</div>
+
+      <div class="card cex">
+        <p><strong>Énoncé :</strong> Translater le triangle ABC de vecteur ⃗v(3 ; −2), sachant que A(1;4), B(3;4), C(2;6).</p>
+        <div class="steps-list" style="margin-top: 16px;">
+          <div class="step-item" style="border: none; background: rgba(0,122,94,0.05); box-shadow: none;">
+            <div class="step-num" style="background: var(--teal); width:28px;height:28px;font-size:12px;">1</div>
+            <div class="step-content">
+              <div class="step-title" style="font-size:13px;">Vecteur ⃗v(3 ; −2)</div>
+              <div class="step-desc">3 vers la droite, 2 vers le bas</div>
+            </div>
+          </div>
+          <div class="step-item" style="border: none; background: rgba(0,122,94,0.05); box-shadow: none;">
+            <div class="step-num" style="background: var(--teal); width:28px;height:28px;font-size:12px;">2</div>
+            <div class="step-content">
+              <div class="step-title" style="font-size:13px;">Image de A(1;4) → A'(1+3 ; 4−2) = <span style="color:var(--teal)">A'(4;2)</span></div>
+              <div class="step-desc">On ajoute 3 à l'abscisse, on soustrait 2 à l'ordonnée</div>
+            </div>
+          </div>
+          <div class="step-item" style="border: none; background: rgba(0,122,94,0.05); box-shadow: none;">
+            <div class="step-num" style="background: var(--teal); width:28px;height:28px;font-size:12px;">3</div>
+            <div class="step-content">
+              <div class="step-title" style="font-size:13px;">Image de B(3;4) → <span style="color:var(--teal)">B'(6;2)</span> · Image de C(2;6) → <span style="color:var(--teal)">C'(5;4)</span></div>
+              <div class="step-desc">Même opération pour chaque sommet</div>
+            </div>
+          </div>
+          <div class="step-item" style="border: none; background: rgba(0,122,94,0.05); box-shadow: none;">
+            <div class="step-num" style="background: var(--teal); width:28px;height:28px;font-size:12px;">4</div>
+            <div class="step-content">
+              <div class="step-title" style="font-size:13px;">Tracer A'B'C' et vérifier AB = A'B' = 2</div>
+              <div class="step-desc">La figure translatée est identique à l'originale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cwarn">
+        <p><strong>Erreurs fréquentes :</strong> Attention à bien <strong>nommer les points images</strong> avec le symbole ' (A prime, B prime…). Ne pas confondre translation (glissement) et rotation (rotation) ou symétrie (réflexion). Le vecteur a toujours un sens : ⃗v(3;2) ≠ ⃗v(−3;−2).</p>
+      </div>
+
+      <!-- Mini défi final -->
+      <div class="g-challenge">
+        <div class="g-challenge-tag">🎯 Défi final · +20 XP</div>
+        <div class="g-challenge-q">Le point M(2 ; 5) est translaté par ⃗v(−4 ; 3). Quelles sont les coordonnées de M' ?</div>
+        <div class="g-challenge-opts">
+          <button class="g-copt" onclick="gChallenge('s4', this, false, 'Non : 2+(−4) = −2 et 5+3 = 8. Vérifiez le calcul.')">M'(6 ; 2)</button>
+          <button class="g-copt" onclick="gChallenge('s4', this, true, 'Excellent ! 2+(−4) = −2 et 5+3 = 8, donc M\'(−2 ; 8).')">M'(−2 ; 8)</button>
+          <button class="g-copt" onclick="gChallenge('s4', this, false, 'Attention au signe de −4 : on soustrait 4, pas on ajoute.')">M'(6 ; 8)</button>
+        </div>
+        <div class="g-challenge-fb" id="gcf-s4"></div>
+      </div>
+
+    </section>
+
+  </div><!-- /content -->
+</main>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+/* ─── GAMIFICATION STATE ─── */
+const G = {
+  xp: 0,
+  challengesDone: {},
+  badges: { def: false, quad: false, prop: false, meth: false, all: false }
+};
+
+const LEVELS = [
+  { name: 'Débutant',   icon: '🌱', min: 0,  sub: 'Lance-toi !' },
+  { name: 'Apprenti',   icon: '📘', min: 20, sub: 'Tu progresses !' },
+  { name: 'Confirmé',   icon: '📐', min: 45, sub: 'Bien joué !' },
+  { name: 'Expert',     icon: '🏆', min: 80, sub: 'Excellent !' },
+  { name: 'Maître',     icon: '⭐', min: 120, sub: 'Parfait !' },
+];
+
+function gCurrentLevel() {
+  let lv = LEVELS[0];
+  LEVELS.forEach(l => { if (G.xp >= l.min) lv = l; });
+  return lv;
+}
+
+function gRefreshHUD() {
+  const lv = gCurrentLevel();
+  document.getElementById('gLevelIcon').textContent = lv.icon;
+  document.getElementById('gLevelName').textContent = lv.name;
+  document.getElementById('gLevelSub').textContent  = lv.sub;
+  const pct = Math.min(100, Math.round(G.xp / 150 * 100));
+  document.getElementById('gXPText').textContent = G.xp + ' / 150';
+  document.getElementById('gXPFill').style.width = pct + '%';
+  document.getElementById('gSideXP').textContent  = G.xp + ' pts';
+  document.getElementById('gSideFill').style.width = pct + '%';
+  Object.keys(G.badges).forEach(b => {
+    const el = document.getElementById('gb-' + b);
+    if (el) el.classList.toggle('unlocked', !!G.badges[b]);
+  });
+}
+
+function gAddXP(amount, event) {
+  G.xp += amount;
+  if (event) {
+    const pop = document.createElement('div');
+    pop.className = 'g-xp-pop';
+    pop.textContent = '+' + amount + ' XP';
+    pop.style.left = (event.clientX - 20) + 'px';
+    pop.style.top  = (event.clientY - 20) + 'px';
+    document.body.appendChild(pop);
+    setTimeout(() => pop.remove(), 1500);
+  }
+  gToast('+' + amount + ' XP gagné ! 🎉', 'toast-xp');
+  gCheckBadges();
+  gRefreshHUD();
+}
+
+function gToast(msg, cls = '') {
+  const t = document.createElement('div');
+  t.className = 'g-toast ' + cls;
+  t.textContent = msg;
+  document.getElementById('gToastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 2900);
+}
+
+function gCheckBadges() {
+  if (!G.badges.def  && G.challengesDone['s1'])  { G.badges.def  = true; gToast('🏅 Badge Maître de la définition !', 'toast-badge'); }
+  if (!G.badges.quad && G.challengesDone['s2a']) { G.badges.quad = true; gToast('🏅 Badge Expert du quadrillage !', 'toast-badge'); }
+  if (!G.badges.prop && G.challengesDone['s3'])  { G.badges.prop = true; gToast('🏅 Badge Champion des propriétés !', 'toast-badge'); }
+  if (!G.badges.meth && G.challengesDone['s4'])  { G.badges.meth = true; gToast('🏅 Badge Maître de la méthode !', 'toast-badge'); }
+  if (G.badges.def && G.badges.quad && G.badges.prop && G.badges.meth && !G.badges.all) {
+    G.badges.all = true;
+    gToast('⭐ Badge Maître absolu des Translations !', 'toast-badge');
+  }
+}
+
+function gChallenge(sectionId, btn, isCorrect, explanation) {
+  if (G.challengesDone[sectionId]) return;
+  G.challengesDone[sectionId] = true;
+  const container = btn.closest('.g-challenge-opts');
+  container.querySelectorAll('.g-copt').forEach(b => b.disabled = true);
+  const fb = document.getElementById('gcf-' + sectionId);
+  fb.classList.add('show');
+  const xpMap = { s1: 15, s2a: 15, s2b: 15, s3: 15, s4: 20 };
+  if (isCorrect) {
+    btn.classList.add('gc-ok');
+    fb.style.color = 'var(--teal)';
+    fb.innerHTML = `✅ <strong>Excellent !</strong> ${explanation ? '→ ' + explanation : ''}<br><span style="font-family:'DM Mono';font-size:12px;color:var(--teal);">+${xpMap[sectionId] || 15} XP gagné !</span>`;
+    gAddXP(xpMap[sectionId] || 15, window._lastEvent);
+  } else {
+    btn.classList.add('gc-ko');
+    container.querySelectorAll('.g-copt').forEach(b2 => {
+      if ((b2.getAttribute('onclick') || '').includes(',true,')) b2.classList.add('gc-ok');
+    });
+    fb.innerHTML = `❌ <strong>Pas tout à fait !</strong> La bonne réponse est en vert. → ${explanation || ''}`;
+  }
+}
+
+function gHUDtoggle() {
+  const hud = document.getElementById('gHUD');
+  const btn = document.getElementById('gHUD-toggle');
+  const hidden = hud.classList.toggle('hud-hidden');
+  btn.classList.toggle('hud-hidden', hidden);
+  btn.textContent = hidden ? '◀' : '▶';
+}
+
+document.addEventListener('click', e => { window._lastEvent = e; });
+
+/* ─── SIDEBAR SCROLL SPY ─── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nlink');
+function updateNav() {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.getBoundingClientRect().top;
+    if (top < window.innerHeight * 0.4) current = s.id;
+  });
+  navLinks.forEach(l => {
+    l.classList.toggle('on', l.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+
+/* ─── SCROLL REVEAL ─── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.section').forEach(s => revealObs.observe(s));
+
+/* ─── MOBILE MENU ─── */
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+/* ═══════════════════════════════════════
+   CANVAS ANIMATIONS
+═══════════════════════════════════════ */
+
+/* ── HERO CANVAS ── */
+(function() {
+  const c  = document.getElementById('heroCanvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const W = c.width, H = c.height;
+
+  const tri = [{x:40,y:160},{x:100,y:80},{x:140,y:160}];
+  let t = 0, dir = 1, phase = 0; // phase: 0=idle, 1=moving, 2=arrived
+
+  const vx = 120, vy = -50;
+  const DURATION = 120;
+
+  function lerp(a, b, tt) { return a + (b - a) * tt; }
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function drawTri(pts, alpha, fill, stroke) {
+    ctx.globalAlpha = alpha;
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    ctx.lineTo(pts[1].x, pts[1].y);
+    ctx.lineTo(pts[2].x, pts[2].y);
+    ctx.closePath();
+    ctx.fillStyle = fill;
+    ctx.fill();
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function drawArrow(x1,y1,x2,y2,color) {
+    const ang = Math.atan2(y2-y1,x2-x1);
+    ctx.beginPath();
+    ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x2,y2);
+    ctx.lineTo(x2-12*Math.cos(ang-0.4), y2-12*Math.sin(ang-0.4));
+    ctx.lineTo(x2-12*Math.cos(ang+0.4), y2-12*Math.sin(ang+0.4));
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+  }
+
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0,0,W,H);
+
+    frame++;
+    if (frame > 220) frame = 0;
+
+    const prog = frame < 60 ? 0 : frame < 180 ? easeInOut((frame-60)/120) : 1;
+
+    // Original triangle (ghost if moved)
+    const alpha1 = 1;
+    drawTri(tri, alpha1, 'rgba(26,127,212,0.10)', 'rgba(26,127,212,0.5)');
+
+    // Labels
+    ctx.fillStyle = 'rgba(26,127,212,0.7)';
+    ctx.font = '11px "DM Mono"';
+    ctx.fillText('A', tri[0].x-14, tri[0].y+4);
+    ctx.fillText('B', tri[1].x-4,  tri[1].y-8);
+    ctx.fillText('C', tri[2].x+4,  tri[2].y+4);
+
+    if (prog > 0) {
+      const moved = tri.map(p => ({x: p.x + vx*prog, y: p.y + vy*prog}));
+      drawTri(moved, 0.5 + 0.5*prog, 'rgba(26,127,212,0.15)', 'rgba(26,127,212,0.8)');
+
+      if (prog > 0.1) {
+        ctx.fillStyle = 'rgba(26,127,212,0.85)';
+        ctx.fillText("A'", moved[0].x-16, moved[0].y+4);
+        ctx.fillText("B'", moved[1].x-4,  moved[1].y-8);
+        ctx.fillText("C'", moved[2].x+4,  moved[2].y+4);
+      }
+
+      // Vector arrow
+      const ax = tri[0].x, ay = tri[0].y;
+      drawArrow(ax, ay, ax + vx*prog, ay + vy*prog, 'rgba(100,64,204,0.8)');
+    }
+
+    // Vecteur label
+    if (prog > 0.5) {
+      ctx.fillStyle = 'rgba(100,64,204,0.9)';
+      ctx.font = 'bold 12px "DM Mono"';
+      ctx.fillText('⃗v', tri[0].x + vx*0.5 + 6, tri[0].y + vy*0.5 - 6);
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ── TRANSLATION CANVAS (section 1) ── */
+let animRunning = false;
+let animFrame = 0;
+let animRaf = null;
+
+const TRI_ORIG = [{x:60,y:200},{x:130,y:120},{x:190,y:200}];
+const VEC = {x:220, y:-60};
+
+function drawTransCanvas(prog) {
+  const c   = document.getElementById('transCanvas');
+  const ctx = c.getContext('2d');
+  const W = c.width, H = c.height;
+  ctx.clearRect(0,0,W,H);
+
+  // Background grid hint
+  ctx.strokeStyle = 'rgba(26,127,212,0.05)';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 30) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 30) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  function eio(t){ return t<.5?2*t*t:-1+(4-2*t)*t; }
+  const p = eio(Math.min(1, prog));
+
+  // Ghost original
+  ctx.globalAlpha = 0.35;
+  ctx.beginPath();
+  TRI_ORIG.forEach((pt,i) => i===0?ctx.moveTo(pt.x,pt.y):ctx.lineTo(pt.x,pt.y));
+  ctx.closePath();
+  ctx.fillStyle = '#1a7fd4'; ctx.fill();
+  ctx.strokeStyle = '#1a7fd4'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Labels original
+  ctx.fillStyle = '#1a7fd4'; ctx.font = '13px "DM Mono"';
+  ctx.fillText('A', TRI_ORIG[0].x-18, TRI_ORIG[0].y+5);
+  ctx.fillText('B', TRI_ORIG[1].x-4,  TRI_ORIG[1].y-10);
+  ctx.fillText('C', TRI_ORIG[2].x+6,  TRI_ORIG[2].y+5);
+
+  if (p > 0) {
+    const moved = TRI_ORIG.map(pt => ({x: pt.x + VEC.x*p, y: pt.y + VEC.y*p}));
+
+    // Moving triangle
+    ctx.globalAlpha = 0.3 + 0.7*p;
+    ctx.beginPath();
+    moved.forEach((pt,i) => i===0?ctx.moveTo(pt.x,pt.y):ctx.lineTo(pt.x,pt.y));
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(100,64,204,0.25)'; ctx.fill();
+    ctx.strokeStyle = '#6440cc'; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    // Dashed lines for each vertex
+    TRI_ORIG.forEach((pt, i) => {
+      ctx.setLineDash([5,5]);
+      ctx.beginPath();
+      ctx.moveTo(pt.x, pt.y);
+      ctx.lineTo(pt.x + VEC.x*p, pt.y + VEC.y*p);
+      ctx.strokeStyle = 'rgba(100,64,204,0.4)';
+      ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // Arrow for main vector
+    const ax=TRI_ORIG[0].x, ay=TRI_ORIG[0].y;
+    const bx=ax+VEC.x*p, by=ay+VEC.y*p;
+    const ang = Math.atan2(by-ay, bx-ax);
+    ctx.beginPath();
+    ctx.moveTo(ax,ay); ctx.lineTo(bx,by);
+    ctx.strokeStyle = '#6440cc'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+    ctx.stroke();
+    if (p > 0.1) {
+      ctx.beginPath();
+      ctx.moveTo(bx,by);
+      ctx.lineTo(bx-14*Math.cos(ang-0.4), by-14*Math.sin(ang-0.4));
+      ctx.lineTo(bx-14*Math.cos(ang+0.4), by-14*Math.sin(ang+0.4));
+      ctx.closePath();
+      ctx.fillStyle = '#6440cc'; ctx.fill();
+    }
+
+    if (p > 0.3) {
+      ctx.fillStyle = '#6440cc'; ctx.font = 'bold 13px "DM Mono"';
+      ctx.fillText('⃗v', ax + VEC.x*p*0.5 + 8, ay + VEC.y*p*0.5 - 8);
+    }
+
+    if (p > 0.6) {
+      ctx.fillStyle = '#6440cc'; ctx.font = '13px "DM Mono"';
+      ctx.fillText("A'", moved[0].x-20, moved[0].y+5);
+      ctx.fillText("B'", moved[1].x-4,  moved[1].y-10);
+      ctx.fillText("C'", moved[2].x+6,  moved[2].y+5);
+    }
+  }
+
+  // XP info
+  const vxC = Math.round(VEC.x/30*2), vyC = Math.round(-VEC.y/30*2);
+  document.getElementById('vecDisplay').textContent = '(' + vxC + ' ; ' + vyC + ')';
+  document.getElementById('vecValue').textContent   = '(' + vxC + ' ; ' + vyC + ')';
+  const norm = Math.sqrt(VEC.x*VEC.x+VEC.y*VEC.y);
+  document.getElementById('vecDist').textContent = (norm/30*2).toFixed(1) + ' cm';
+}
+
+function toggleAnim() {
+  animRunning = !animRunning;
+  document.getElementById('animBtn').textContent = animRunning ? '⏸ Pause' : '▶ Animer';
+  if (animRunning) runAnim();
+}
+function resetAnim() {
+  animRunning = false;
+  animFrame = 0;
+  document.getElementById('animBtn').textContent = '▶ Animer';
+  if (animRaf) cancelAnimationFrame(animRaf);
+  drawTransCanvas(0);
+}
+function runAnim() {
+  if (!animRunning) return;
+  animFrame++;
+  if (animFrame > 200) animFrame = 0;
+  const t = animFrame < 100 ? animFrame / 100 : 2 - animFrame/100;
+  drawTransCanvas(Math.max(0, Math.min(1, t)));
+  animRaf = requestAnimationFrame(runAnim);
+}
+drawTransCanvas(0);
+
+/* ── GRID CANVAS (section 2.1) ── */
+let gridStepN = 0;
+
+function drawGrid(step) {
+  const c = document.getElementById('gridCanvas');
+  const ctx = c.getContext('2d');
+  const W = c.width, H = c.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const CELL = 32;
+  const OX = 40, OY = 40;
+
+  // Grid
+  ctx.strokeStyle = 'rgba(26,127,212,0.15)';
+  ctx.lineWidth = 0.8;
+  for (let x = OX; x <= W-20; x += CELL) { ctx.beginPath(); ctx.moveTo(x,OY); ctx.lineTo(x,H-OY); ctx.stroke(); }
+  for (let y = OY; y <= H-20; y += CELL) { ctx.beginPath(); ctx.moveTo(OX,y); ctx.lineTo(W-OX,y); ctx.stroke(); }
+
+  // Figure originale: triangle
+  const A = {x: OX + CELL*2, y: OY + CELL*4};
+  const B = {x: OX + CELL*4, y: OY + CELL*2};
+  const C = {x: OX + CELL*5, y: OY + CELL*4};
+
+  // Vecteur: (4 ; -2)
+  const dX = CELL*4, dY = -CELL*2;
+  const A2 = {x:A.x+dX, y:A.y+dY};
+  const B2 = {x:B.x+dX, y:B.y+dY};
+  const C2 = {x:C.x+dX, y:C.y+dY};
+
+  function drawPt(pt, color, label) {
+    ctx.beginPath(); ctx.arc(pt.x,pt.y,5,0,Math.PI*2);
+    ctx.fillStyle = color; ctx.fill();
+    ctx.fillStyle = color; ctx.font = 'bold 13px "DM Mono"';
+    ctx.fillText(label, pt.x+8, pt.y-6);
+  }
+
+  function drawTri(p1,p2,p3, fill, stroke) {
+    ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.lineTo(p3.x,p3.y); ctx.closePath();
+    ctx.fillStyle = fill; ctx.fill();
+    ctx.strokeStyle = stroke; ctx.lineWidth = 2.5; ctx.stroke();
+  }
+
+  // Step 0: figure originale uniquement
+  drawTri(A,B,C, 'rgba(26,127,212,0.15)', '#1a7fd4');
+  drawPt(A, '#1a7fd4', 'A');
+  drawPt(B, '#1a7fd4', 'B');
+  drawPt(C, '#1a7fd4', 'C');
+
+  if (step >= 1) {
+    // Flèches de déplacement depuis chaque sommet
+    function drawCount(from, to, color) {
+      ctx.setLineDash([5,4]);
+      ctx.beginPath(); ctx.moveTo(from.x, from.y); ctx.lineTo(to.x, from.y);
+      ctx.strokeStyle = color; ctx.lineWidth = 1.8; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(to.x, from.y); ctx.lineTo(to.x, to.y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    drawCount(A, A2, 'rgba(100,64,204,0.6)');
+    drawCount(B, B2, 'rgba(100,64,204,0.6)');
+    drawCount(C, C2, 'rgba(100,64,204,0.6)');
+    // Labels
+    ctx.fillStyle = 'rgba(100,64,204,0.8)'; ctx.font = '11px "DM Mono"';
+    ctx.fillText('+4', A.x + dX/2 - 8, A.y + 14);
+    ctx.fillText('−2', A2.x + 6, A.y + dY/2);
+  }
+
+  if (step >= 2) {
+    // Points images
+    drawPt(A2, '#6440cc', "A'");
+    drawPt(B2, '#6440cc', "B'");
+    drawPt(C2, '#6440cc', "C'");
+  }
+
+  if (step >= 3) {
+    drawTri(A2, B2, C2, 'rgba(100,64,204,0.12)', '#6440cc');
+  }
+
+  // Vecteur label
+  ctx.fillStyle = '#007a5e'; ctx.font = 'bold 12px "DM Mono"';
+  ctx.fillText('⃗v(4 ; −2)', W - 110, OY + 18);
+
+  document.getElementById('gridStepLabel').textContent = 'Étape ' + step + '/3';
+}
+
+function gridStep() {
+  if (gridStepN < 3) gridStepN++;
+  drawGrid(gridStepN);
+}
+function gridReset() {
+  gridStepN = 0;
+  drawGrid(0);
+}
+drawGrid(0);
+
+/* ── WHITE PAPER CANVAS (section 2.2) ── */
+let whiteStepN = 0;
+
+function drawWhiteCanvas(step) {
+  const c = document.getElementById('whiteCanvas');
+  const ctx = c.getContext('2d');
+  const W = c.width, H = c.height;
+  ctx.clearRect(0,0,W,H);
+
+  // White background
+  ctx.fillStyle = '#fafbff'; ctx.fillRect(0,0,W,H);
+
+  const A = {x:80, y:200};
+  const B = {x:160, y:110};
+  const C = {x:220, y:200};
+  const vx = 190, vy = -50;
+  const A2={x:A.x+vx,y:A.y+vy}, B2={x:B.x+vx,y:B.y+vy}, C2={x:C.x+vx,y:C.y+vy};
+
+  function pt(p, col, label) {
+    ctx.beginPath(); ctx.arc(p.x,p.y,5,0,Math.PI*2);
+    ctx.fillStyle=col; ctx.fill();
+    ctx.fillStyle=col; ctx.font='bold 13px "DM Mono"';
+    ctx.fillText(label, p.x+8, p.y-6);
+  }
+
+  function arrow(x1,y1,x2,y2,col, dash=false) {
+    ctx.setLineDash(dash?[6,4]:[]);
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2);
+    ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke();
+    ctx.setLineDash([]);
+    const ang=Math.atan2(y2-y1,x2-x1);
+    ctx.beginPath();
+    ctx.moveTo(x2,y2);
+    ctx.lineTo(x2-12*Math.cos(ang-.4),y2-12*Math.sin(ang-.4));
+    ctx.lineTo(x2-12*Math.cos(ang+.4),y2-12*Math.sin(ang+.4));
+    ctx.closePath(); ctx.fillStyle=col; ctx.fill();
+  }
+
+  // Original
+  ctx.beginPath(); ctx.moveTo(A.x,A.y); ctx.lineTo(B.x,B.y); ctx.lineTo(C.x,C.y); ctx.closePath();
+  ctx.fillStyle='rgba(26,127,212,0.12)'; ctx.fill();
+  ctx.strokeStyle='#1a7fd4'; ctx.lineWidth=2.5; ctx.stroke();
+  pt(A,'#1a7fd4','A'); pt(B,'#1a7fd4','B'); pt(C,'#1a7fd4','C');
+
+  // Vecteur de référence (toujours visible)
+  const vRefX=40, vRefY=240;
+  arrow(vRefX, vRefY, vRefX+vx, vRefY+vy, '#007a5e');
+  ctx.fillStyle='#007a5e'; ctx.font='bold 13px "DM Mono"';
+  ctx.fillText('⃗v', vRefX+vx*0.5+4, vRefY+vy*0.5-8);
+
+  if (step>=1) {
+    // Parallèles depuis chaque sommet
+    [[A,A2],[B,B2],[C,C2]].forEach(([from,to])=>{
+      arrow(from.x,from.y,to.x,to.y,'rgba(196,120,0,0.6)',true);
+    });
+    ctx.fillStyle='rgba(196,120,0,0.8)'; ctx.font='11px "Plus Jakarta Sans"';
+    ctx.fillText('Parallèle à ⃗v (même longueur)', A.x, A.y+28);
+  }
+
+  if (step>=2) {
+    pt(A2,'#6440cc',"A'"); pt(B2,'#6440cc',"B'"); pt(C2,'#6440cc',"C'");
+  }
+
+  if (step>=3) {
+    ctx.beginPath(); ctx.moveTo(A2.x,A2.y); ctx.lineTo(B2.x,B2.y); ctx.lineTo(C2.x,C2.y); ctx.closePath();
+    ctx.fillStyle='rgba(100,64,204,0.12)'; ctx.fill();
+    ctx.strokeStyle='#6440cc'; ctx.lineWidth=2.5; ctx.stroke();
+  }
+
+  document.getElementById('whiteStepLabel').textContent = 'Étape ' + step + '/3';
+}
+
+function whiteStep() { if(whiteStepN<3) whiteStepN++; drawWhiteCanvas(whiteStepN); }
+function whiteReset() { whiteStepN=0; drawWhiteCanvas(0); }
+drawWhiteCanvas(0);
+
+/* ── PROPERTY MINI CANVASES ── */
+function drawPropCanvas(id, drawFn) {
+  const c = document.getElementById(id);
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  drawFn(ctx, c.width, c.height);
+}
+
+// 1 Longueurs
+drawPropCanvas('propCanvas1', (ctx,W,H)=>{
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#1a7fd4'; ctx.lineWidth=2.5;
+  ctx.beginPath(); ctx.moveTo(20,60); ctx.lineTo(90,40); ctx.lineTo(90,80); ctx.closePath();
+  ctx.fillStyle='rgba(26,127,212,0.1)'; ctx.fill(); ctx.stroke();
+  ctx.strokeStyle='#6440cc'; ctx.lineWidth=2.5;
+  ctx.beginPath(); ctx.moveTo(110,60); ctx.lineTo(180,40); ctx.lineTo(180,80); ctx.closePath();
+  ctx.fillStyle='rgba(100,64,204,0.1)'; ctx.fill(); ctx.stroke();
+  ctx.fillStyle='#1a7fd4'; ctx.font='bold 11px "DM Mono"'; ctx.fillText('AB=5cm',20,H-8);
+  ctx.fillStyle='#6440cc'; ctx.fillText("A'B'=5cm",108,H-8);
+  ctx.fillStyle='rgba(0,122,94,0.8)'; ctx.font='bold 12px "DM Mono"'; ctx.fillText('=',97,54);
+});
+
+// 2 Angles
+drawPropCanvas('propCanvas2', (ctx,W,H)=>{
+  ctx.clearRect(0,0,W,H);
+  function drawAngle(cx,cy,col){
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+50,cy-20); ctx.moveTo(cx,cy); ctx.lineTo(cx+40,cy+25);
+    ctx.strokeStyle=col; ctx.lineWidth=2.5; ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx,cy,18,-0.46,0.56);
+    ctx.strokeStyle=col; ctx.lineWidth=1.5; ctx.stroke();
+    ctx.fillStyle=col; ctx.font='11px "DM Mono"'; ctx.fillText('60°',cx+20,cy+8);
+  }
+  drawAngle(30,55,'#1a7fd4');
+  drawAngle(120,55,'#6440cc');
+  ctx.fillStyle='rgba(0,122,94,0.8)'; ctx.font='bold 12px "DM Mono"'; ctx.fillText('=',100,50);
+});
+
+// 3 Alignement
+drawPropCanvas('propCanvas3', (ctx,W,H)=>{
+  ctx.clearRect(0,0,W,H);
+  function line(pts, col, dash=false){
+    ctx.setLineDash(dash?[4,3]:[]);
+    ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+    pts.slice(1).forEach(p=>ctx.lineTo(p[0],p[1]));
+    ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke(); ctx.setLineDash([]);
+  }
+  const pts1=[[15,70],[60,45],[105,70]];
+  const pts2=[[115,70],[160,45],[205,70]];
+  line(pts1,'#1a7fd4'); line(pts2,'#6440cc');
+  pts1.forEach((p,i)=>{ ctx.beginPath();ctx.arc(p[0],p[1],5,0,Math.PI*2);ctx.fillStyle='#1a7fd4';ctx.fill(); ctx.fillStyle='#1a7fd4';ctx.font='10px DM Mono';ctx.fillText(['A','B','C'][i],p[0]-4,p[1]-10); });
+  pts2.forEach((p,i)=>{ ctx.beginPath();ctx.arc(p[0],p[1],5,0,Math.PI*2);ctx.fillStyle='#6440cc';ctx.fill(); ctx.fillStyle='#6440cc';ctx.font='10px DM Mono';ctx.fillText(["A'","B'","C'"][i],p[0]-4,p[1]-10); });
+  ctx.fillStyle='rgba(0,122,94,0.8)'; ctx.font='10px "DM Mono"'; ctx.fillText('alignés → alignés', 30, H-8);
+});
+
+// 4 Parallélisme
+drawPropCanvas('propCanvas4', (ctx,W,H)=>{
+  ctx.clearRect(0,0,W,H);
+  function parallelLines(x,col){
+    [[x,30,x+50,55],[x+10,65,x+60,90]].forEach(([x1,y1,x2,y2])=>{
+      ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);
+      ctx.strokeStyle=col;ctx.lineWidth=2.5;ctx.stroke();
+    });
+  }
+  parallelLines(10,'#1a7fd4');
+  parallelLines(120,'#6440cc');
+  ctx.fillStyle='rgba(0,122,94,0.8)';ctx.font='10px "DM Mono"';ctx.fillText('∥ → ∥',85,60);
+  ctx.fillStyle='#1a7fd4';ctx.font='10px "DM Mono"';ctx.fillText('(AB)∥(CD)',8,H-6);
+  ctx.fillStyle='#6440cc';ctx.fillText("(A'B')∥(C'D')",116,H-6);
+});
+
+// 5 Aires
+drawPropCanvas('propCanvas5', (ctx,W,H)=>{
+  ctx.clearRect(0,0,W,H);
+  function rect(x,y,w,h,col){
+    ctx.fillStyle=col+'22';ctx.fillRect(x,y,w,h);
+    ctx.strokeStyle=col;ctx.lineWidth=2;ctx.strokeRect(x,y,w,h);
+  }
+  rect(10,20,70,60,'#1a7fd4');
+  rect(110,20,70,60,'#6440cc');
+  ctx.fillStyle='#1a7fd4';ctx.font='10px "DM Mono"';ctx.fillText('Aire=42 cm²',10,H-6);
+  ctx.fillStyle='#6440cc';ctx.fillText("Aire'=42 cm²",108,H-6);
+  ctx.fillStyle='rgba(0,122,94,0.8)';ctx.font='bold 13px "DM Mono"';ctx.fillText('=',93,55);
+});
+
+/* ─── INIT ─── */
+gRefreshHUD();
+setTimeout(() => gToast('👋 Bienvenue ! Complète les défis pour gagner des XP.', ''), 800);
+</script>
+</body>
+</html>
